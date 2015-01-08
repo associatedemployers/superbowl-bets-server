@@ -1,0 +1,39 @@
+{
+  "name": "superbowl-bets-server",
+  "version": "0.0.1",
+  "description": "Superbowl Bets Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "environment=test mocha \"tests/**/*.js\" --reporter spec",
+    "test-acceptance": "environment=test mocha \"tests/acceptance/**/*.js\" --reporter spec",
+    "test-unit": "environment=test mocha \"tests/unit/**/*.js\" --reporter spec"
+  },
+  "repository": "https://github.com/associatedemployers/superbowl-bets-server",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "Associated Employers",
+  "license": "ISC",
+  "dependencies": {
+    "MD5": "^1.2.1",
+    "bcrypt": "^0.8.0",
+    "bluebird": "^2.3.11",
+    "body-parser": "^1.9.2",
+    "chalk": "^0.5.1",
+    "express": "^4.10.2",
+    "glob": "^4.1.2",
+    "jwt-simple": "^0.2.0",
+    "lodash": "^2.4.1",
+    "moment": "^2.8.3",
+    "mongoose": "^3.8.19",
+    "morgan": "^1.5.0",
+    "promise": "^6.0.1",
+    "winston": "^0.8.3"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "chai-as-promised": "^4.1.1",
+    "chai-http": "^1.0.0",
+    "mocha": "^2.0.1"
+  }
+}

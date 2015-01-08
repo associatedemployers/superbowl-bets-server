@@ -1,0 +1,48 @@
+[
+  {
+    "title": "Someone breaks their leg",
+    "helper": "Betting that someone will or will not break their leg in the superbowl game",
+    "choices": [
+      {
+        "title": "Someone does",
+        "oddsNmr": 1,
+        "oddsDmr": 1
+      },
+      {
+        "title": "No one does",
+        "oddsNmr": 1,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Half-time features unexpected nudity",
+    "choices": [
+      {
+        "title": "It does",
+        "oddsNmr": 1,
+        "oddsDmr": 100
+      },
+      {
+        "title": "It doesn't",
+        "oddsNmr": 30,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Test prop",
+    "choices": [
+      {
+        "title": "A",
+        "oddsNmr": 4,
+        "oddsDmr": 7
+      },
+      {
+        "title": "B",
+        "oddsNmr": 3,
+        "oddsDmr": 2
+      }
+    ]
+  }
+]
