@@ -5,6 +5,8 @@ var winston   = require('winston').loggers.get('default'),
     appConfig = require('../config/app-config'),
     users     = require('../config/user-manifest'),
     Bet       = require('../models/bet'),
+    Prop      = require('../models/prop'),
+    Promise   = require('bluebird'), // jshint ignore:line
     _         = require('lodash');
 
 exports.submit = function ( req, res, next ) {
@@ -62,6 +64,59 @@ exports.submit = function ( req, res, next ) {
       }
 
       res.status(201).send(betRecord);
+
+      _markChoices(bets.reduce(function ( ret, item ) {
+        if ( item.choice ) {
+          ret.push({
+            prop:   item.proposition,
+            choice: item.choice
+          });
+        }
+
+        return ret;
+      }, []));
     });
   });
 };
+
+function _markChoices ( choices ) {
+  if ( !_.isArray(choices) || choices.length < 1 ) {
+    return;
+  }
+
+  Promise.all(choices.map(function ( choice ) {
+    return new Promise(function ( resolve, reject ) {
+      Prop.findById( choice.prop, function ( err, prop ) {
+        if ( err ) {
+          return reject( err );
+        }
+
+        if ( !prop ) {
+          return resolve();
+        }
+
+        _choiceIndex = _.findIndex(prop.choices, function ( propChoice ) {
+          return propChoice._id.toString() === choice.choice.toString();
+        });
+
+        if ( _choiceIndex < 0 ) {
+          return resolve();
+        }
+
+        prop.choices[ _choiceIndex ].numberOfBets = prop.choices[ _choiceIndex ].numberOfBets + 1;
+      
+        prop.save(function ( err, p ) {
+          if ( err ) {
+            reject( err );
+          } else {
+            resolve( p );
+          }
+        });
+      });
+    });
+  })).then(function ( results ) {
+    console.log('Marked', results.length, 'propositions...');
+  }).catch(function ( err ) {
+    console.error('Error marking props:', err);
+  });
+}
