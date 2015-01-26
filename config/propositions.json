@@ -1,47 +1,244 @@
 [
   {
-    "title": "Someone breaks their leg",
-    "helper": "Betting that someone will or will not break their leg in the superbowl game",
+    "title": "Who will win the superbowl?",
     "choices": [
       {
-        "title": "Someone does",
+        "title": "New England Patriots",
+        "oddsNmr": 10,
+        "oddsDmr": 11
+      },
+      {
+        "title": "Seattle Seahawks",
+        "oddsNmr": 10,
+        "oddsDmr": 11
+      }
+    ]
+  },
+  {
+    "title": "Final score O/U 48.5",
+    "helper": "You are betting on the final score being over or under 48.5",
+    "choices": [
+      {
+        "title": "Over 48.5",
         "oddsNmr": 1,
         "oddsDmr": 1
       },
       {
-        "title": "No one does",
+        "title": "Under 48.5",
         "oddsNmr": 1,
         "oddsDmr": 1
       }
     ]
   },
   {
-    "title": "Half-time features unexpected nudity",
+    "title": "Score after 1st quarter O/U 12.5",
+    "helper": "You are betting on the score after the 1st quarter being over or under 12.5",
     "choices": [
       {
-        "title": "It does",
+        "title": "Over 12.5",
         "oddsNmr": 1,
-        "oddsDmr": 100
+        "oddsDmr": 1
       },
       {
-        "title": "It doesn't",
-        "oddsNmr": 30,
+        "title": "Under 12.5",
+        "oddsNmr": 1,
         "oddsDmr": 1
       }
     ]
   },
   {
-    "title": "Test prop",
+    "title": "Score at halftime O/U 24.5",
+    "helper": "You are betting on the score at halftime being over or under 24.5",
     "choices": [
       {
-        "title": "A",
-        "oddsNmr": 4,
-        "oddsDmr": 7
+        "title": "Over 24.5",
+        "oddsNmr": 1,
+        "oddsDmr": 1
       },
       {
-        "title": "B",
+        "title": "Under 24.5",
+        "oddsNmr": 1,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Coin toss",
+    "choices": [
+      {
+        "title": "Heads",
+        "oddsNmr": 10,
+        "oddsDmr": 11
+      },
+      {
+        "title": "Tails",
+        "oddsNmr": 10,
+        "oddsDmr": 11
+      }
+    ]
+  },
+  {
+    "title": "Color of Gatorade poured on winning coach",
+    "choices": [
+      {
+        "title": "Clear/Water",
         "oddsNmr": 3,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Red",
+        "oddsNmr": 3,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Orange",
+        "oddsNmr": 3,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Green",
+        "oddsNmr": 5,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Purple",
+        "oddsNmr": 8,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Blue",
+        "oddsNmr": 8,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Times \"Greatest of all time\" is said during broadcast O/U 4.5",
+    "choices": [
+      {
+        "title": "Over 24.5",
+        "oddsNmr": 1,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Under 24.5",
+        "oddsNmr": 1,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Power goes out in the stadium",
+    "choices": [
+      {
+        "title": "Power goes out",
+        "oddsNmr": 44,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "A fan goes streaking on the field",
+    "choices": [
+      {
+        "title": "Fan goes streaking",
+        "oddsNmr": 50,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "A bird gets inside the stadium",
+    "choices": [
+      {
+        "title": "A bird gets in",
+        "oddsNmr": 1,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Halftime: Katy Perry's hair color",
+    "choices": [
+      {
+        "title": "Brunette",
+        "oddsNmr": 1,
         "oddsDmr": 2
+      },
+      {
+        "title": "Purple or blue",
+        "oddsNmr": 5,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Red",
+        "oddsNmr": 10,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Blonde",
+        "oddsNmr": 12,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "Halftime: Wardrobe malfunction",
+    "choices": [
+      {
+        "title": "Halftime features a wardrobe malfunction",
+        "oddsNmr": 22,
+        "oddsDmr": 1
+      }
+    ]
+  },
+  {
+    "title": "First commerical to air",
+    "choices": [
+      {
+        "title": "Anheuser-Busch",
+        "oddsNmr": 4,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Doritos",
+        "oddsNmr": 5,
+        "oddsDmr": 1
+      },
+      {
+        "title": "BMW",
+        "oddsNmr": 6,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Coke",
+        "oddsNmr": 6,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Godaddy",
+        "oddsNmr": 8,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Lexus",
+        "oddsNmr": 8,
+        "oddsDmr": 1
+      },
+      {
+        "title": "Chevy",
+        "oddsNmr": 10,
+        "oddsDmr": 1
+      },
+      {
+        "title": "American Express",
+        "oddsNmr": 20,
+        "oddsDmr": 1
+      },
+      {
+        "title": "McDonald's",
+        "oddsNmr": 33,
+        "oddsDmr": 1
       }
     ]
   }
