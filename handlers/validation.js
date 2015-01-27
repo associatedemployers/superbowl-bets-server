@@ -4,7 +4,8 @@ var winston   = require('winston').loggers.get('default'),
     respond   = require('./response'),
     _         = require('lodash');
 
-var users     = require(process.cwd() + '/config/user-manifest'),
+var Bet       = require(process.cwd() + '/models/bet'),
+    users     = require(process.cwd() + '/config/user-manifest'),
     appConfig = require(process.cwd() + '/config/app-config');
 
 exports.validate = function ( req, res, next ) {
@@ -26,13 +27,25 @@ exports.validate = function ( req, res, next ) {
     return respond.code.notfound(res);
   }
 
-  res.status(200).send({
-    status: 'ok',
-    user: {
-      id:        userIndex + 1,
-      firstName: user.firstName,
-      lastName:  user.lastName,
-      amount:    appConfig.startingValue
+  Bet.findOne({ user: userIndex + 1 }, function ( err, bet ) {
+    if ( err ) {
+      return respond.error.res( res, err, true );
     }
+
+    var ret = {
+      status: 'ok',
+      user: {
+        id:        userIndex + 1,
+        firstName: user.firstName,
+        lastName:  user.lastName,
+        amount:    appConfig.startingValue
+      }
+    };
+
+    if ( bet ) {
+      ret.bet = bet._id.toString();
+    }
+
+    res.status(200).send( ret );
   });
 };

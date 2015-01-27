@@ -9,6 +9,55 @@ var winston   = require('winston').loggers.get('default'),
     Promise   = require('bluebird'), // jshint ignore:line
     _         = require('lodash');
 
+var ObjectId       = require('mongoose').Types.ObjectId,
+    ResourceMixin  = require('../lib/mixins/resource-handler');
+
+exports.fetchByID = function ( req, res, next ) {
+  var id = req.params.id;
+
+  if ( !id ) {
+    return respond.error.res(res, 'Invalid request');
+  }
+
+  Bet.findById(id, function ( err, bet ) {
+    if ( err ) {
+      return respond.error.res(res, err, true);
+    }
+
+    if ( !bet ) {
+      return respond.code.notfound( res );
+    }
+
+    bet = bet.toObject();
+
+    Promise.all(bet.choices.map(function ( choice, index ) {
+      return new Promise(function ( resolve, reject ) {
+        Prop.findById(choice.proposition, function ( err, prop ) {
+          if ( err ) {
+            throw err;
+          }
+
+          choice.proposition = prop;
+          choice.choice = ( choice.choice ) ? _.find(prop.choices, function ( c ) {
+            return c._id.toString() === choice.choice.toString();
+          }) : choice.choice;
+          choice.id = index;
+
+          resolve(choice);
+        });
+      });
+    })).then(function ( result ) {
+      bet.choices = result;
+
+      res.status(200).send({
+        bet: bet
+      });
+    }).catch(function ( err ) {
+      respond.error.res(res, err, true);
+    });
+  });
+};
+
 exports.submit = function ( req, res, next ) {
   var payload = req.body,
       userId  = parseFloat(payload.user),
