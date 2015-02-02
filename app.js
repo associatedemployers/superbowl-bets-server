@@ -62,7 +62,8 @@ exports.registerModels = function () {
 exports.registerPropositions = function () {
   var Proposition  = require(process.cwd() + '/models/prop'),
       propositions = require(process.cwd() + '/config/propositions'),
-      Promise      = require('bluebird');
+      Promise      = require('bluebird'),
+      _            = require('lodash');
 
   return Promise.all(propositions.map(function ( proposition ) {
     return new Promise(function ( resolve, reject ) {
@@ -71,11 +72,7 @@ exports.registerPropositions = function () {
           return reject( err );
         }
 
-        if ( foundProp ) {
-          return resolve( foundProp );
-        }
-
-        var createdProp = new Proposition( proposition );
+        var createdProp = ( foundProp ) ? _.merge(foundProp, proposition) : new Proposition( proposition );
 
         createdProp.save(function ( err, newProp ) {
           if ( err ) {
