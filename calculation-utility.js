@@ -95,7 +95,7 @@ function calculateWinnings ( choices ) {
 
   var remaining = choices.reduce(function ( val, choice ) {
     return val - choice.wager;
-  }, startingVal);
+  }, startVal);
 
   console.log(remaining);
 
