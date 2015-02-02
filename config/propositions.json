@@ -5,7 +5,8 @@
       {
         "title": "New England Patriots",
         "oddsNmr": 10,
-        "oddsDmr": 11
+        "oddsDmr": 11,
+        "winner":  true
       },
       {
         "title": "Seattle Seahawks",
@@ -21,7 +22,8 @@
       {
         "title": "Over 48.5",
         "oddsNmr": 1,
-        "oddsDmr": 1
+        "oddsDmr": 1,
+        "winner":  true
       },
       {
         "title": "Under 48.5",
@@ -42,7 +44,8 @@
       {
         "title": "Under 12.5",
         "oddsNmr": 1,
-        "oddsDmr": 1
+        "oddsDmr": 1,
+        "winner":  true
       }
     ]
   },
@@ -53,7 +56,8 @@
       {
         "title": "Over 24.5",
         "oddsNmr": 1,
-        "oddsDmr": 1
+        "oddsDmr": 1,
+        "winner":  true
       },
       {
         "title": "Under 24.5",
@@ -73,7 +77,8 @@
       {
         "title": "Tails",
         "oddsNmr": 10,
-        "oddsDmr": 11
+        "oddsDmr": 11,
+        "winner":  true
       }
     ]
   },
@@ -108,7 +113,8 @@
       {
         "title": "Blue",
         "oddsNmr": 8,
-        "oddsDmr": 1
+        "oddsDmr": 1,
+        "winner":  true
       }
     ]
   },
@@ -116,12 +122,12 @@
     "title": "Times \"Greatest of all time\" is said during broadcast O/U 4.5",
     "choices": [
       {
-        "title": "Over 24.5",
+        "title": "Over 4.5",
         "oddsNmr": 1,
         "oddsDmr": 1
       },
       {
-        "title": "Under 24.5",
+        "title": "Under 4.5",
         "oddsNmr": 1,
         "oddsDmr": 1
       }
@@ -153,7 +159,8 @@
       {
         "title": "A bird gets in",
         "oddsNmr": 1,
-        "oddsDmr": 1
+        "oddsDmr": 1,
+        "winner":  true
       }
     ]
   },
@@ -163,7 +170,8 @@
       {
         "title": "Brunette",
         "oddsNmr": 1,
-        "oddsDmr": 2
+        "oddsDmr": 2,
+        "winner":  true
       },
       {
         "title": "Purple or blue",
@@ -228,7 +236,8 @@
       {
         "title": "Chevy",
         "oddsNmr": 10,
-        "oddsDmr": 1
+        "oddsDmr": 1,
+        "winner":  true
       },
       {
         "title": "American Express",
