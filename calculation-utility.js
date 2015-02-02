@@ -1,5 +1,6 @@
 var winston   = require('winston').loggers.get('default'),
     chalk     = require('chalk'),
+    startVal  = require('./config/app-config').startingValue,
     users     = require('./config/user-manifest'),
     Bet       = require('./models/bet'),
     Prop      = require('./models/prop'),
@@ -77,7 +78,7 @@ exports.getResults = function () {
 };
 
 function calculateWinnings ( choices ) {
-  return choices.reduce(function ( winnings, choice ) {
+  var winnings = choices.reduce(function ( winnings, choice ) {
     var p     = choice.proposition,
         wager = choice.wager;
 
@@ -91,4 +92,12 @@ function calculateWinnings ( choices ) {
 
     return winnings + Math.floor( quotient > 1 ? quotient * wager : (quotient * wager) + wager );
   }, 0);
+
+  var remaining = choices.reduce(function ( val, choice ) {
+    return val - choice.wager;
+  }, startingVal);
+
+  console.log(remaining);
+
+  return remaining + winnings;
 }
