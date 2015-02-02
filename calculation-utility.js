@@ -6,54 +6,73 @@ var winston   = require('winston').loggers.get('default'),
     Promise   = require('bluebird'), // jshint ignore:line
     _         = require('lodash');
 
+require('./config/mongoose').init();
+
 exports.getResults = function () {
-  var amts = [];
+  return new Promise(function ( resolve, reject ) {
+    var amts = [];
 
-  Prop.find({}, function ( err, props ) {
-    if ( err ) {
-      throw err;
-    }
+    console.log('Finding props');
 
-    var promises = users.map(function ( user, index ) {
-      return new Promise(function ( resolve, reject ) {
-        Bet.findOne({ user: index + 1 }, function ( err, bet ) {
-          if ( err ) {
-            throw err;
-          }
+    Prop.find({}, function ( err, props ) {
+      console.log('Found props');
 
-          var plainBet = bet.toObject();
+      if ( err ) {
+        throw err;
+      }
 
-          plainBet.choices.map(function ( choice ) {
-            var pid = choice.proposition.toString();
+      var promises = users.map(function ( user, index ) {
+        return new Promise(function ( resolve, reject ) {
+          console.log('finding bet for ', user);
+          Bet.findOne({ user: index + 1 }, function ( err, bet ) {
+            if ( err ) {
+              throw err;
+            }
 
-            choice.proposition = _.find(props, function ( prop ) {
-              return prop._id.toString() === pid;
+            if ( !bet ) {
+              return resolve();
+            }
+
+            var plainBet = bet.toObject();
+
+            plainBet.choices.map(function ( choice ) {
+              var pid = choice.proposition.toString();
+
+              choice.proposition = _.find(props, function ( prop ) {
+                return prop._id.toString() === pid;
+              });
+
+              return choice;
             });
 
-            return choice;
+            resolve( plainBet );
           });
-
-          resolve( plainBet );
         });
       });
-    });
-  });
 
-  Promise.all( promises ).then(function ( bets ) {
-    bets.forEach(function ( bet ) {
-      amts.push({
-        winnings: calculateWinnings( bet.choices ),
-        user:     users[ bet.user - 1 ]
+      Promise.all( promises ).then(function ( bets ) {
+        bets.forEach(function ( bet ) {
+          if ( !bet ) {
+            return;
+          }
+
+          amts.push({
+            winnings: calculateWinnings( bet.choices ),
+            user:     users[ bet.user - 1 ]
+          });
+        });
+
+        console.log( chalk.underline.bold('Results') );
+
+        _.sortBy(amts, 'winnings').forEach(function ( amt ) {
+          console.log( amt.user.firstName, amt.user.lastName, '-', chalk.bold('$' + amt.winnings) );
+        });
+
+        resolve(_.sortBy(amts, 'winnings'));
+      }).catch(function ( err ) {
+        console.error( err );
       });
     });
-
-    console.log( chalk.underline.bold('Results') );
-
-    _.sortBy(amts, 'winnings').forEach(function ( amt ) {
-      console.log( amt.user.firstName, amt.user.lastName, '-', chalk.bold('$' + amt.winnings) );
-    });
-  }).catch(function ( err ) {
-    console.error( err );
   });
 };
 
