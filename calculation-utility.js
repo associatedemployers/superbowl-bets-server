@@ -1,6 +1,5 @@
 var winston   = require('winston').loggers.get('default'),
     chalk     = require('chalk'),
-    respond   = require('./response'),
     users     = require('./config/user-manifest'),
     Bet       = require('./models/bet'),
     Prop      = require('./models/prop'),
