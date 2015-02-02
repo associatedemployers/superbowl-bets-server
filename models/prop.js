@@ -14,6 +14,8 @@ var choiceSchema = new Schema({
   oddsNmr: Number, // Numerator
   oddsDmr: Number, // Denominator
 
+  winner: Boolean,
+
   numberOfBets: { type: Number, default: 0 }
 });
 
