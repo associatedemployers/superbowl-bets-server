@@ -1,15 +1,13 @@
 var winston   = require('winston').loggers.get('default'),
     chalk     = require('chalk'),
-    normalize = require('../config/data-normalization'),
     respond   = require('./response'),
-    appConfig = require('../config/app-config'),
-    users     = require('../config/user-manifest'),
-    Bet       = require('../models/bet'),
-    Prop      = require('../models/prop'),
+    users     = require('./config/user-manifest'),
+    Bet       = require('./models/bet'),
+    Prop      = require('./models/prop'),
     Promise   = require('bluebird'), // jshint ignore:line
     _         = require('lodash');
 
-function getResults () {
+exports.getResults = function () {
   var amts = [];
 
   Prop.find({}, function ( err, props ) {
@@ -58,7 +56,7 @@ function getResults () {
   }).catch(function ( err ) {
     console.error( err );
   });
-}
+};
 
 function calculateWinnings ( choices ) {
   return choices.reduce(function ( winnings, choice ) {
